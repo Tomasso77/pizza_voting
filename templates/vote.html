@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Vote on pizza {{ qs.name }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card mb-03" style="width:80%;">
+<h3>Do you think pizza {{ qs.name }} is the best?</h3>
+<form method="post" action=".">
+
+    {% csrf_token %}
+ <button class='btn btn-outline-success' name="submit"> <i class="fas fa-check"></i> Yes, {{ qs.name }} is the best!</button>
+ <a href="{% url 'pizzas:list' %}" class="btn btn-outline-primary"><i class="fas fa-undo"></i> No, back to list</a>
+
+</form>
+
+{% endblock %}

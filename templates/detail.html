@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ pizza.name }}{% endblock %}
+{% block content %}
+<div class="container">
+    <h5>{{ pizza.name }} details: </h5>
+    <div class='row'>
+        {% include 'pizza-list-inline.html' with detail=True %}
+    </div>
+
+{% endblock %}

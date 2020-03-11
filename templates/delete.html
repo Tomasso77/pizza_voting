@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Delete the pizza{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card mb-03" style="width:80%;">
+<h3>Are you sure, you want to delete {{ qs.name }}?</h3>
+<form method="post" action=".">
+
+    {% csrf_token %}
+ <button class='btn btn-danger' name="submit"> <i class="fas fa-trash-alt"></i> Yes, delete</button>
+ <a href="{% url 'pizzas:list' %}" class="btn btn-primary"><i class="fas fa-undo"></i> No, back to list</a>
+
+</form>
+
+{% endblock %}

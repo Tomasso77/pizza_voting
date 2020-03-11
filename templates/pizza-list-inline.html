@@ -1,0 +1,43 @@
+<div class='col-12 col-md-12 mb-3 mx-auto'>
+    <div class='card border text-dark'>
+        <div class="card-body">
+            <h2 class="card-title">
+           {% if not detail %}
+                <a href="{{ pizza.get_absolute_url }}" >
+            {% endif %}<span class="badge badge-pill badge-primary">
+                {{ pizza.name }}</span>
+            {% if not detail %}
+                </a>
+            {% endif %}
+            </h2>
+            {% if pizza.topping1 %} {{ pizza.topping1 }} ({{ pizza.topping1_amount }}g) {% endif %}
+            {% if pizza.topping2 %} {{ pizza.topping2 }} ({{ pizza.topping2_amount }}g) {% endif %}
+            {% if pizza.topping3 %} {{ pizza.topping3 }} ({{ pizza.topping3_amount }}g) {% endif %}
+            {% if pizza.topping4 %} {{ pizza.topping4 }} ({{ pizza.topping4_amount }}g) {% endif %}
+            {% if pizza.topping5 %} {{ pizza.topping5 }} ({{ pizza.topping5_amount }}g) {% endif %}
+            {% if pizza.topping6 %} {{ pizza.topping6 }} ({{ pizza.topping6_amount }}g) {% endif %}
+            {% if pizza.topping7 %} {{ pizza.topping7 }} ({{ pizza.topping7_amount }}g) {% endif %}
+            {% if pizza.topping8 %} {{ pizza.topping8 }} ({{ pizza.topping8_amount }}g) {% endif %}
+            {% if pizza.topping9 %} {{ pizza.topping9 }} ({{ pizza.topping9_amount }}g) {% endif %}
+            {% if pizza.topping10 %} {{ pizza.topping10 }} ({{ pizza.topping10_amount }}g) {% endif %}
+
+            <small class='text-muted'>
+            <p>
+                Number of toppings: {{ pizza.nr_of_toppings }}, <br>
+                Total amount of toppings: {{ pizza.total_toppings_amount }}</p>
+            </small>
+
+            <p>
+                Votes: {% if pizza.votes %}{{ pizza.votes }}{% else %}0{% endif %}
+            </p>
+            {% if detail %}
+                <a class="btn btn-outline-danger" href="{{ pizza.get_delete_url }}" ><i class="fas fa-trash"></i> Delete</a>
+                <a class="btn btn-outline-success" href="{{ pizza.get_edit_url }}" ><i class="fas fa-edit"></i> Edit</a>
+                <a href="{% url 'pizzas:list' %}" class="btn btn-outline-primary"><i class="fas fa-undo"></i> Back to list</a>
+
+            {% else %}
+                <a class="btn btn-outline-info" href="{{ pizza.get_vote_url }}" ><i class="fas fa-vote-yea"></i> Vote on {{ pizza.name }} pizza</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

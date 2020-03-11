@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Add new pizza{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card mb-03" style="width:80%;">
+<h1>Add new pizza</h1>
+<p>Add new pizza with the following form:</p>
+<form id="pizza_form" method="post" action=".">
+
+    {% csrf_token %}
+    <!-- {{ pForm.as_p }} -->
+
+    <h4>Pizza name: </h4>{{ pForm.name }}
+    <p></p>
+    <p>Topping 1: {{ pForm.topping1 }} amount {{ pForm.topping1_amount }} [g] </p>
+    <p>Topping 2: {{ pForm.topping2 }} amount {{ pForm.topping2_amount }} [g] </p>
+    <p>Topping 3: {{ pForm.topping3 }} amount {{ pForm.topping3_amount }} [g] </p>
+    <p>Topping 4: {{ pForm.topping4 }} amount {{ pForm.topping4_amount }} [g] </p>
+    <p>Topping 5: {{ pForm.topping5 }} amount {{ pForm.topping5_amount }} [g] </p>
+    <p>Topping 6: {{ pForm.topping6 }} amount {{ pForm.topping6_amount }} [g] </p>
+    <p>Topping 7: {{ pForm.topping7 }} amount {{ pForm.topping7_amount }} [g] </p>
+    <p>Topping 8: {{ pForm.topping8 }} amount {{ pForm.topping8_amount }} [g] </p>
+    <p>Topping 9: {{ pForm.topping9 }} amount {{ pForm.topping9_amount }} [g] </p>
+    <p>Topping 10: {{ pForm.topping10 }} amount {{ pForm.topping10_amount }} [g] </p>
+    <p>
+    <button type="submit" class="btn btn-outline-success" name="submit"><i class="fas fa-plus-square"></i>  Add this pizza </button>
+    <a class="btn btn-outline-primary" href="{% url 'pizzas:list' %}" ><i class="fas fa-undo"></i> Return back to list</a>
+    </p>
+
+
+</form>
+
+{% endblock %}

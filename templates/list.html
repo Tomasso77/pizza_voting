@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Our pizzas{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class = "container">
+            <h2 class="display-4">Best pizza voting!</h2>
+            <p class="lead">Vote on pizza you like the most!</p>
+        </div>
+    </div>
+ <div class='row'>
+    {% for pizza in qs_pizzas %}
+        {% include 'pizza-list-inline.html' with detail=False %}
+    {% endfor %}
+    </div>
+          <a class="btn btn-outline-success" href="{% url 'pizzas:add' %}"><i class="fas fa-plus"></i> Add new pizza </a>
+</div>
+{% endblock %}
