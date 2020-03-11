@@ -5,19 +5,20 @@ from django.urls import reverse
 
 # Create your models here.
 class Pizza(models.Model):
-    name = models.CharField(max_length = 100)
-    slug = models.SlugField(max_length = 150,
-                            unique = True)
-    topping1 = models.CharField(max_length = 100, default="", blank=True)
-    topping2 = models.CharField(max_length = 100, default="", blank=True)
-    topping3 = models.CharField(max_length = 100, default="", blank=True)
-    topping4 = models.CharField(max_length = 100, default="", blank=True)
-    topping5 = models.CharField(max_length = 100, default="", blank=True)
-    topping6 = models.CharField(max_length = 100, default="", blank=True)
-    topping7 = models.CharField(max_length = 100, default="", blank=True)
-    topping8 = models.CharField(max_length = 100, default="", blank=True)
-    topping9 = models.CharField(max_length = 100, default="", blank=True)
-    topping10 = models.CharField(max_length = 100, default="", blank=True)
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=150,
+                            unique=True,
+                            blank=True)
+    topping1 = models.CharField(max_length=100, default="", blank=True)
+    topping2 = models.CharField(max_length=100, default="", blank=True)
+    topping3 = models.CharField(max_length=100, default="", blank=True)
+    topping4 = models.CharField(max_length=100, default="", blank=True)
+    topping5 = models.CharField(max_length=100, default="", blank=True)
+    topping6 = models.CharField(max_length=100, default="", blank=True)
+    topping7 = models.CharField(max_length=100, default="", blank=True)
+    topping8 = models.CharField(max_length=100, default="", blank=True)
+    topping9 = models.CharField(max_length=100, default="", blank=True)
+    topping10 = models.CharField(max_length=100, default="", blank=True)
     topping1_amount = models.IntegerField(default=0)
     topping2_amount = models.IntegerField(default=0)
     topping3_amount = models.IntegerField(default=0)
@@ -40,7 +41,7 @@ class Pizza(models.Model):
         self.nr_of_toppings = 0
         self.total_toppings_amount = 0
         
-        for i in range(1,11):
+        for i in range(1, 11):
             self.total_toppings_amount += int(eval('self.topping'+str(i)+'_amount'))
             if eval('self.topping'+str(i)) != '':
                 self.nr_of_toppings += 1
@@ -59,11 +60,3 @@ class Pizza(models.Model):
     
     def get_vote_url(self):
         return f"{self.get_absolute_url()}vote"
-    
-    
-        
-# class Votes(models.Model):
-#     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-#     votes = models.IntegerField(default=0)
-    
-    

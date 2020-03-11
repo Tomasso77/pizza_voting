@@ -4,8 +4,7 @@ from .models import Pizza
 from .forms import PizzaForm
 
 
-# Create your views here.
-def list(request):
+def list_pizzas(request):
     qs = Pizza.objects.all().order_by('-votes')
     return render(request,
                   'list.html',
@@ -45,6 +44,7 @@ def delete(request, id):
                   {'qs': qs}
                   )
 
+
 def edit(request, id):
     qs = get_object_or_404(Pizza, id=id)
     pForm = PizzaForm(request.POST or None, instance=qs)
@@ -56,8 +56,9 @@ def edit(request, id):
     
     return render(request,
                   'edit.html',
-                  {'pizza':qs, 'pForm': pForm}
+                  {'pizza': qs, 'pForm': pForm}
                   )
+
 
 def vote(request, id):
     qs = get_object_or_404(Pizza, id=id)

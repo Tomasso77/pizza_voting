@@ -8,8 +8,9 @@ from .serializers import PizzaSerializer, PizzaMiniSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
+
 class PizzaListAPIView(ListCreateAPIView):
-    queryset = Pizza.objects.all()
+    queryset = Pizza.objects.all().order_by('-votes')
     serializer_class = PizzaSerializer
     
 
@@ -18,7 +19,7 @@ class PizzaRUDView(RetrieveUpdateDestroyAPIView):
     serializer_class = PizzaSerializer
     
     def get_queryset(self):
-        return Pizza.objects.all()
+        return Pizza.objects.all().order_by('-votes')
     
     
 class PizzaVoteView(UpdateAPIView):
