@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Pizza
+from pizzas.models import Pizza
 from django.utils.text import slugify
 
 
@@ -28,3 +28,7 @@ class PizzaTestCase(TestCase):
         classic_pizza = Pizza.objects.get(name="Classic pizza with mushrooms")
         pizza_slug = slugify("Classic pizza with mushrooms")  # 'classic-pizza-with-mushrooms'
         self.assertEqual(classic_pizza.slug, pizza_slug)
+        
+    def test_vote(self):
+        classic_pizza = Pizza.objects.get(name="Classic pizza with mushrooms")
+        self.assertEqual(classic_pizza.votes, 0)
