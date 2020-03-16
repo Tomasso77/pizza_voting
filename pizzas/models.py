@@ -29,8 +29,8 @@ class Pizza(models.Model):
     topping8_amount = models.IntegerField(default=0)
     topping9_amount = models.IntegerField(default=0)
     topping10_amount = models.IntegerField(default=0)
-    nr_of_toppings = models.IntegerField(default=0)
-    total_toppings_amount = models.IntegerField(default=0)
+    # nr_of_toppings = models.IntegerField(default=0)
+    # total_toppings_amount = models.IntegerField(default=0)
     votes = models.IntegerField(default=0, blank=True)
 
     def __str__(self):
@@ -38,13 +38,13 @@ class Pizza(models.Model):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(str(self.name))
-        self.nr_of_toppings = 0
-        self.total_toppings_amount = 0
-        
-        for i in range(1, 11):
-            self.total_toppings_amount += int(eval('self.topping'+str(i)+'_amount'))
-            if eval('self.topping'+str(i)) != '':
-                self.nr_of_toppings += 1
+        # self.nr_of_toppings = 0
+        # self.total_toppings_amount = 0
+        #
+        # for i in range(1, 11):
+        #     self.total_toppings_amount += int(eval('self.topping'+str(i)+'_amount'))
+        #     if eval('self.topping'+str(i)) != '':
+        #         self.nr_of_toppings += 1
             
         super(Pizza, self).save(*args, **kwargs)
 
@@ -60,3 +60,18 @@ class Pizza(models.Model):
     
     def get_vote_url(self):
         return f"{self.get_absolute_url()}vote"
+
+    @property
+    def total_toppings_amount(self):
+        tot_top_amnt = 0
+        for i in range(1, 11):
+            tot_top_amnt += int(eval('self.topping'+str(i)+'_amount'))
+        return tot_top_amnt
+    
+    @property
+    def nr_of_toppings(self):
+        nr_of_top = 0
+        for i in range(1, 11):
+            if eval('self.topping'+str(i)) != '':
+                nr_of_top += 1
+        return nr_of_top

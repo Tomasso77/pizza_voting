@@ -4,16 +4,16 @@ from django.utils.text import slugify
 
 
 
-class PizzaTestCase(TestCase):
+class PizzaTestModels(TestCase):
     def setUp(self):
-        Pizza.objects.create(name="Classic pizza with mushrooms",
+        self.pizza1 = Pizza.objects.create(name="Classic pizza with mushrooms",
                              topping1="Mozzarella Cheese", topping1_amount="50",
                              topping2="Tomato sauce", topping2_amount="10",
                              topping3="Pepperoni", topping3_amount="15",
                              topping4="Mushrooms", topping4_amount="20",
                              )
     
-    def test_nr_toppings(self):
+    def test_nr_of_toppings(self):
         """Test that nr of toppings is correctly calculated"""
         classic_pizza = Pizza.objects.get(name="Classic pizza with mushrooms")
         self.assertEqual(classic_pizza.nr_of_toppings, 4)
