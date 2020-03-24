@@ -1,7 +1,6 @@
 from django.urls import path, include
 from .views import PizzaListAPIView, PizzaRUDView, PizzaVoteView
 
-# app_name = "api"
 
 urlpatterns = [
     path('', PizzaListAPIView.as_view(), name='list-api'),

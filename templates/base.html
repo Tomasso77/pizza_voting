@@ -15,5 +15,27 @@
    {% endblock %}
 </div>
 <script src="https://kit.fontawesome.com/7724c00ec3.js"></script>
+<script type="text/javascript">
+var myWindow;
+
+function openWin(link_to_go) {
+    var url = link_to_go;
+    myWindow = window.open(url, "_blank", "width=500, height=500");
+}
+
+function closeWin() {
+    myWindow.close();
+}
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+
+    <script>
+       $(document).ready(function () {
+          $('#topping_form').ajaxForm(function () {
+          window.close();
+          });
+       });
+    </script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Add new pizza{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card mb-03" style="width:80%;">
+<h1>Add toppings to pizza {{ pizza.name }}</h1>
+    <p>{% for topping in toppings %}
+        {{topping.topping}} ({{topping.get_amount_display}}),
+        {% endfor %}</p>
+
+<p>Add the toppings with the following form:</p>
+<form id="add_toppings_form" method="post" action=".">
+
+    {% csrf_token %}
+
+
+        <input type="hidden" name="pizza" required id="id_pizza" value={{ pizza.id }}>
+        <p>{{ taForm.topping }} {{ taForm.amount }}
+
+    <button type="submit" class="btn btn-outline-success" name="submit"><i class="fas fa-plus-square"></i>  Add topping to pizza {{pizza.name}}</button></p>
+
+
+
+</form>
+    <p>
+          <button class="btn btn-outline-secondary" onclick="openWin('{% url "pizzas:add_new_topping" %}')"><i class="fas fa-plus"></i> Create new topping</button>
+    </p>
+    <p>
+          <a class="btn btn-outline-primary" href="{% url 'pizzas:list' %}" ><i class="fas fa-undo"></i> Return back to list</a>
+    </p>
+
+{% endblock %}

@@ -10,7 +10,7 @@
     </div>
  <div class='row'>
     {% for pizza in qs_pizzas %}
-        {% include 'pizza-list-inline.html' with detail=False %}
+        {% include 'pizza-list-inline.html' with detail=False top_amt=top_amt %}
     {% endfor %}
     </div>
           <a class="btn btn-outline-success" href="{% url 'pizzas:add' %}"><i class="fas fa-plus"></i> Add new pizza </a>

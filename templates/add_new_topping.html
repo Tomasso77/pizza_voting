@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Add new topping{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card mb-03" style="width:80%;">
+<h1>Add new topping</h1>
+<form id="topping_form" method="post" action="." onsubmit="return closeSelf(this);">
+
+    {% csrf_token %}
+
+    <h4>Topping name:
+
+        {{ tForm.topping }}</h4>
+    <p>
+    <button type="submit" class="btn btn-outline-success" name="submit"><i class="fas fa-plus-square"></i>  Add new topping</button>
+    </p>
+
+
+</form>
+
+
+{% endblock %}
